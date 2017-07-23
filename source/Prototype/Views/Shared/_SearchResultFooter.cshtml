@@ -1,0 +1,22 @@
+﻿@model ListViewModelBase
+@{
+    var ajaxOptions = Ajax.CreateAjaxOptionsSearch("GET");
+    var renderOptions = PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(ajaxOptions);
+    renderOptions.LinkToFirstPageFormat = "««";
+    renderOptions.LinkToPreviousPageFormat = "«";
+    renderOptions.LinkToNextPageFormat = "»";
+    renderOptions.LinkToLastPageFormat = "»»";
+}
+<div class="row">
+    <div class="col-xs-12 text-center">
+        @Html.PagedListPager(Model.PagedList, page => Url.Action("SearchUpdate", new { PageNumber = page }), renderOptions)
+        @Ajax.ActionLink("PageSizeLink", "SearchUpdate", null, ajaxOptions, new { @id = "PageSizeLink", @style = "display:none;" })
+    </div>
+</div>
+<script>
+    var options = PROTOTYPE.common.getMultiSelectOptions();
+    $.extend(options, {
+        onChange: PROTOTYPE.common.onChangePageSize
+    });
+    $('#PageSize').multiselect(options);
+</script>

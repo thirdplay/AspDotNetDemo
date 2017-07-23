@@ -1,0 +1,55 @@
+﻿@{
+    var title = $"{ViewBag.Title} - PROTOTYPE";
+    if (AppEnvironment.EnvironmentCode != EnvironmentCode.Production)
+    {
+        var fileInfo = new FileInfo(System.Reflection.Assembly.GetExecutingAssembly().Location);
+        title += $" [{AppEnvironment.EnvironmentCode.GetDisplayName()}]";
+        title += $" [ビルド日時:{fileInfo.LastWriteTime}]";
+    }
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>@title</title>
+    @Styles.Render("~/Content/css")
+    @RenderSection("css", required: false)
+</head>
+<body class="no-thank-yu">
+    <div id="container" style="display:none;">
+        @Html.Partial("_Header")
+        <div>
+            <p id="page-top"><span>TOP</span></p>
+            <p id="page-bottom"><span>BOTTOM</span></p>
+        </div>
+        <div class="container body-content">
+            @Html.Partial("_CommonParam")
+            @RenderBody()
+            <hr />
+            <footer>
+                <p>&copy; @DateTime.Now.Year - PROTOTYPE</p>
+            </footer>
+        </div>
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/microsoftajax")
+        @Scripts.Render("~/bundles/bootstrap")
+        @Scripts.Render("~/bundles/prototype")
+        @if (@ViewBag.Default != null)
+        {
+            <script>
+                var defaultData = $.parseJSON('@Html.Raw(@ViewBag.Default)');
+            </script>
+        }
+        else
+        {
+            <script>
+                var defaultData = {};
+            </script>
+        }
+        @RenderSection("scripts", required: false)
+        @Scripts.Render("~/bundles/startup")
+    </div>
+</body>
+</html>

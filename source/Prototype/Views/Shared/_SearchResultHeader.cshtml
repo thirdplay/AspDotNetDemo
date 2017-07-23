@@ -1,0 +1,15 @@
+﻿@model ListViewModelBase
+@{
+    var firstItemOnPage = Model.PagedList.FirstItemOnPage.ToString("#,0");
+    var lastItemOnPage = Model.PagedList.LastItemOnPage.ToString("#,0");
+    var totalItemCount = Model.PagedList.TotalItemCount.ToString("#,0");
+}
+<div class="row" style="padding-bottom:8px;">
+    <label class="col-xs-4 control-label" style="text-align:left;font-weight:normal;">
+        @(firstItemOnPage)件 ～ @(lastItemOnPage)件 / @(totalItemCount)件
+    </label>
+    <label class="col-xs-offset-4 col-xs-3 control-label" style="padding-right:0px;">表示件数</label>
+    <div class="col-xs-1">
+        @Html.DropDownListFor(m => m.PageSize, new { @class = "form-control" })
+    </div>
+</div>

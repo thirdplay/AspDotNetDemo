@@ -1,0 +1,14 @@
+﻿<div class="navbar navbar-default navbar-static-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            @Html.ActionLink("PROTOTYPE", "Index", "MainMenu", new { area = "" }, new { @class = "navbar-brand" })
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+            <li>
+                <a href="@Url.Action("Logout", "Acn001")">
+                    <span class="glyphicon glyphicon-log-out"> ログアウト</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>

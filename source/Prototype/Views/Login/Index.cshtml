@@ -1,0 +1,38 @@
+﻿@model LoginViewModel
+@{
+    ViewBag.Title = "ログイン";
+}
+<h2 class="text-center" style="font-size:72px; font-family:Castellar">PROTOTYPE</h2>
+<hr />
+@{
+    var ajaxOptions = Ajax.CreateAjaxOptions();
+}
+@using (@Ajax.BeginForm("Login", "Login", ajaxOptions))
+{
+    @Html.AntiForgeryToken()
+    <div class="row">
+        <div class="col-xs-offset-4 col-xs-4">
+            @Html.MessageArea()
+            <div class="form-group">
+                <label class="control-label">ユーザID</label>
+                @Html.TextBoxFor(m => m.UserId, new { @class = "form-control" })
+                @Html.ValidationFieldFor(m => m.UserId)
+            </div>
+            <div class="form-group">
+                <button class="btn btn-default" name="Button" value="Login">
+                    <span class="glyphicon glyphicon-log-in"> ログイン</span>
+                </button>
+            </div>
+        </div>
+    </div>
+}
+@section css{
+    <style type="text/css">
+        .navbar-nav {
+            display: none;
+        }
+    </style>
+}
+@section scripts{
+    @Scripts.Render("~/bundles/Login/Login")
+}
