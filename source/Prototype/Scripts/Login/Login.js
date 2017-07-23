@@ -18,7 +18,7 @@ PROTOTYPE.common.onInitialized = function () {
  */
 PROTOTYPE.ajax.onSuccessed = function (data, textStatus, jqXHR) {
     // 遷移先のURL取得
-    var nextUrl = PROTOTYPE.common.createActionUrl('Acn003', 'Index');
+    var nextUrl = PROTOTYPE.common.createActionUrl('MainMenu', 'Index');
 
     // 現在のウィンドウを取得
     var myWin = window.open('about:blank', '_self');

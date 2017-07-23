@@ -1,6 +1,4 @@
-﻿using Prototype.Resources;
-using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel;
 using RequiredAttribute = Prototype.Mvc.Validations.RequiredAttribute;
 
 namespace Prototype.ViewModels
@@ -14,7 +12,6 @@ namespace Prototype.ViewModels
         /// ユーザID
         /// </summary>
         [Required]
-        [RegularExpression(@"^a\d{7}", ErrorMessageResourceType = typeof(Messages), ErrorMessageResourceName = "MS014")]
         [DisplayName("ユーザID")]
         public string UserId { get; set; }
     }
