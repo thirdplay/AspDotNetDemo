@@ -18,10 +18,6 @@ namespace Prototype
         {
             Mapper.Initialize(cfg =>
             {
-                /*
-                 * TODO: 設定内容は下記の通り。
-                 * cfg.CreateMap<[コピー元の型],[コピー先の型]>();
-                 */
                 cfg.CreateMap<ListItem, SelectListItem>();
             });
         }
