@@ -1,0 +1,19 @@
+﻿@{
+    ViewBag.Title = "メインメニュー";
+}
+<h2>@ViewBag.Title</h2>
+<hr />
+@{
+    var ajaxOptions = Ajax.CreateAjaxOptions();
+}
+@Html.AntiForgeryToken()
+@Html.MessageArea()
+<div class="row">
+    <div class="form-group">
+        <div class="col-xs-2 control-label">
+            <label>検証テスト</label>
+        </div>
+        <div class="col-xs-4">
+        </div>
+    </div>
+</div>
